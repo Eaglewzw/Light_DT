@@ -1,0 +1,24 @@
+# ninja log v6
+6	13397	1722175021148827931	CMakeFiles/Light_DT.dir/src/preprocess.cu.o	d9e3cdc902443045
+7	3072	1722248719796575729	CMakeFiles/Light_DT.dir/main.cpp.o	4adcfff96e52e98a
+6	2283	1722249477677573078	CMakeFiles/Light_DT.dir/src/LightTrack.cpp.o	de3c0b7c2e1f4acb
+2283	3144	1722249479953479776	Light_DT	7d874d3a53806879
+5	6982	1722175021144827956	CMakeFiles/Light_DT.dir/src/Kalman.cpp.o	d39037b8cdcdca54
+6	4987	1722175021148827931	CMakeFiles/Light_DT.dir/src/MotionDetector.cpp.o	75b455d4a06b1ec6
+7	4795	1722175021148827931	CMakeFiles/Light_DT.dir/src/yololayer.cu.o	109c5f3fc20dbc71
+6	4587	1722175021148827931	CMakeFiles/Light_DT.dir/src/calibrator.cpp.o	fa9c025b503653ae
+3	58	1722390990899556496	build.ninja	8e11c3d2eaf3035b
+5	3646	1722390992739565491	CMakeFiles/Light_DT.dir/src/LightTrack.cpp.o	b106659c920f70a5
+10	3720	1722390992743565511	CMakeFiles/Light_DT.dir/src/calibrator.cpp.o	e37d0589372aa873
+5	4535	1722390992739565491	CMakeFiles/Light_DT.dir/src/MotionDetector.cpp.o	3fd75b44488bd9d
+13	5215	1722390992747565530	CMakeFiles/Light_DT.dir/src/yololayer.cu.o	5e5cb4e5abf1d2ca
+4	5475	1722390992735565472	CMakeFiles/Light_DT.dir/main.cpp.o	84a1302bf88aa3f
+4	7458	1722390992735565472	CMakeFiles/Light_DT.dir/src/Kalman.cpp.o	f8282b5ba7cf30b1
+12	13172	1722390992743565511	CMakeFiles/Light_DT.dir/src/preprocess.cu.o	292ebd9e8999e16
+13173	14130	1722391005907629867	Light_DT	69d3c0170d9e9504
+7	2002	1722392240695580924	CMakeFiles/Light_DT.dir/src/LightTrack.cpp.o	b106659c920f70a5
+6	2695	1722392240695580924	CMakeFiles/Light_DT.dir/main.cpp.o	84a1302bf88aa3f
+2695	3398	1722392243383885718	Light_DT	69d3c0170d9e9504
+7	1930	1722392540474517086	CMakeFiles/Light_DT.dir/src/LightTrack.cpp.o	b106659c920f70a5
+7	2822	1722392540474517086	CMakeFiles/Light_DT.dir/main.cpp.o	84a1302bf88aa3f
+2823	3483	1722392543291345185	Light_DT	69d3c0170d9e9504
