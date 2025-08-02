@@ -1,4 +1,4 @@
-CMakeFiles/Light_DT.dir/src/preprocess.cu.o : /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/src/preprocess.cu \
+CMakeFiles/Light_DT.dir/src/preprocess.cu.o : /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src/preprocess.cu \
     /usr/include/stdc-predef.h \
     /usr/local/cuda/include/cuda_runtime.h \
     /usr/local/cuda/include/crt/host_config.h \
@@ -158,7 +158,7 @@ CMakeFiles/Light_DT.dir/src/preprocess.cu.o : /home/verse/C_plus_plus/Light_DT/0
     /usr/include/c++/9/bits/stl_relops.h \
     /usr/include/c++/9/bits/stl_pair.h \
     /usr/include/c++/9/initializer_list \
-    /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/src/preprocess.h \
+    /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src/preprocess.h \
     /usr/include/c++/9/cstdint \
     /usr/lib/gcc/x86_64-linux-gnu/9/include/stdint.h \
     /usr/include/stdint.h \

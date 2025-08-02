@@ -1,7 +1,7 @@
 CMakeFiles/Light_DT.dir/src/MotionDetector.cpp.o: \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/src/MotionDetector.cpp \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src/MotionDetector.cpp \
  /usr/include/stdc-predef.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/MotionDetector/MotionDetector.hpp \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/MotionDetector/MotionDetector.hpp \
  /usr/include/c++/9/vector /usr/include/c++/9/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \
@@ -323,20 +323,20 @@ CMakeFiles/Light_DT.dir/src/MotionDetector.cpp.o: \
  /usr/local/include/opencv4/opencv2/video.hpp \
  /usr/local/include/opencv4/opencv2/video/tracking.hpp \
  /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/net.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/blob.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/mat.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/allocator.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/platform.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/ncnn_export.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/net.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/blob.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/mat.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/allocator.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/platform.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/ncnn_export.h \
  /usr/include/vulkan/vulkan.h /usr/include/vulkan/vk_platform.h \
  /usr/include/vulkan/vulkan_core.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/option.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/layer.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/modelbin.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/paramdict.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/command.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/pipeline.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/gpu.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/vulkan_header_fix.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/option.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/layer.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/modelbin.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/paramdict.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/command.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/pipeline.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/gpu.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/vulkan_header_fix.h \
  /usr/include/c++/9/numeric /usr/include/c++/9/bits/stl_numeric.h

@@ -1,4 +1,4 @@
-# Install script for directory: /home/verse/C_plus_plus/Light_DT/01_Light_DT_code
+# Install script for directory: /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

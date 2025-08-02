@@ -1,5 +1,6 @@
 #include "net.h"
 
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -65,9 +66,9 @@ static int detect_mobilenetv2(const cv::Mat& bgr, std::vector<float>& objects)
     // original pretrained model from https://github.com/chuanqi305/MobileNetv2-SSDLite
     // https://github.com/chuanqi305/MobileNetv2-SSDLite/blob/master/ssdlite/voc/deploy.prototxt
     // the ncnn model https://github.com/nihui/ncnn-assets/tree/master/models
-    if (mobilenetv2.load_param("/home/verse/C_plus_plus/Light_DT/03_MobileNetV2/model/MobileNetV2_K.ncnn.param"))
+    if (mobilenetv2.load_param("/home/verse/C_plus_plus/Graduation_Code/Light_DT/03_MobileNetV2/model/MobileNetV2_K.ncnn.param"))
         exit(-1);
-    if (mobilenetv2.load_model("/home/verse/C_plus_plus/Light_DT/03_MobileNetV2/model/MobileNetV2_K.ncnn.bin"))
+    if (mobilenetv2.load_model("/home/verse/C_plus_plus/Graduation_Code/Light_DT/03_MobileNetV2/model/MobileNetV2_K.ncnn.bin"))
         exit(-1);
 
     const int target_size = 224;

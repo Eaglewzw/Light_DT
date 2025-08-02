@@ -11,7 +11,7 @@ CUDA_FLAGS = -g -std=c++11 "--generate-code=arch=compute_70,code=[compute_70,sm_
 
 CXX_DEFINES = -DAPI_EXPORTS
 
-CXX_INCLUDES = -I/usr/local/cuda/include -I/opt/TensorRT-8.6/include -I/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/src -I/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/plugin -I/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include -I/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn -I/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/MotionDetector -I/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/Kalman -I/usr/include/eigen3 -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/usr/local/cuda/include -I/opt/TensorRT-8.6/include -I/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src -I/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/plugin -I/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include -I/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn -I/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/MotionDetector -I/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/Kalman -I/usr/include/eigen3 -isystem /usr/local/include/opencv4
 
 CXX_FLAGS = -g -std=gnu++11   -std=c++11
 

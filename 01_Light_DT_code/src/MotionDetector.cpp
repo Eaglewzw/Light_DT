@@ -281,9 +281,9 @@ MotionDetector::MotionDetector(/* args */)
 
     MobileNetV2.register_custom_layer("Silence", Noop_layer_creator);
 
-    if (MobileNetV2.load_param("/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/model/MobileNetV2/MobileNetV2_K.ncnn.param"))
+    if (MobileNetV2.load_param("/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/model/MobileNetV2/MobileNetV2_K.ncnn.param"))
         exit(-1);
-    if (MobileNetV2.load_model("/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/model/MobileNetV2/MobileNetV2_K.ncnn.bin"))
+    if (MobileNetV2.load_model("/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/model/MobileNetV2/MobileNetV2_K.ncnn.bin"))
         exit(-1);
 
 

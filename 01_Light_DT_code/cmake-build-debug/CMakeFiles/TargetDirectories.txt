@@ -1,3 +1,0 @@
-/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/cmake-build-debug/CMakeFiles/Light_DT.dir
-/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/cmake-build-debug/CMakeFiles/rebuild_cache.dir

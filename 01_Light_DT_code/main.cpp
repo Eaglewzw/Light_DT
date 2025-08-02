@@ -190,7 +190,7 @@ int main(int argc, char** argv)
     MotionDetector mMotionDetector;
 
 
-    std::string engine_name = "/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/yolov5s_GLAD.engine";
+    std::string engine_name = "/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/model/yolov5s_GLAD.engine";
     std::string img_dir = "/home/verse/Videos/phantom13.mp4";
 
 
@@ -273,8 +273,8 @@ int main(int argc, char** argv)
     /***********************************局部跟踪器初始化***********************************/ 
     cv::Rect trackWindow;
     cv::Mat init_window;
-    std::string init_model = "/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/model/LightTrcak/lighttrack_init";
-    std::string update_model = "/home/verse/C_plus_plus/Light_DT/01_Light_DT_code/model/LightTrcak/lighttrack_update";
+    std::string init_model = "/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/model/LightTrcak/lighttrack_init";
+    std::string update_model = "/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/model/LightTrcak/lighttrack_update";
 
    
     LightTrack *siam_tracker;
@@ -537,8 +537,8 @@ int main(int argc, char** argv)
         std::cout << "==========================" << std::endl;
         std::cout << std::endl;
         
-//        std::string frameLabel = "FPS: " + std::to_string(fps);
-        std::string frameLabel = "FrameCount: " + std::to_string(frameCount);
+       std::string frameLabel = "FPS: " + std::to_string(fps);
+        // std::string frameLabel = "FrameCount: " + std::to_string(frameCount);
         cv::putText(currentFrame, frameLabel, cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1.0, cv::Scalar(0, 255, 0), 2);
 
 

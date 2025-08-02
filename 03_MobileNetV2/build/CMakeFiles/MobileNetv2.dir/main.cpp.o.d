@@ -1,9 +1,9 @@
 CMakeFiles/MobileNetv2.dir/main.cpp.o: \
- /home/verse/C_plus_plus/Light_DT/03_MobileNetV2/main.cpp \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/03_MobileNetV2/main.cpp \
  /usr/include/stdc-predef.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/net.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/blob.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/mat.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/net.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/blob.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/mat.h \
  /usr/include/c++/9/stdlib.h /usr/include/c++/9/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \
@@ -50,9 +50,9 @@ CMakeFiles/MobileNetv2.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/c++/9/bits/std_abs.h /usr/include/string.h \
  /usr/include/strings.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/allocator.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/platform.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/ncnn_export.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/allocator.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/platform.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/ncnn_export.h \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
@@ -144,10 +144,10 @@ CMakeFiles/MobileNetv2.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/9/bits/basic_string.tcc /usr/include/vulkan/vulkan.h \
  /usr/include/vulkan/vk_platform.h /usr/include/vulkan/vulkan_core.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/option.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/layer.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/modelbin.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/paramdict.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/option.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/layer.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/modelbin.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/paramdict.h \
  /usr/include/c++/9/math.h /usr/include/c++/9/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -158,10 +158,10 @@ CMakeFiles/MobileNetv2.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/command.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/pipeline.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/gpu.h \
- /home/verse/C_plus_plus/Light_DT/01_Light_DT_code/include/ncnn/vulkan_header_fix.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/command.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/pipeline.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/gpu.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/vulkan_header_fix.h \
  /usr/local/include/opencv4/opencv2/core/core.hpp \
  /usr/local/include/opencv4/opencv2/core.hpp \
  /usr/local/include/opencv4/opencv2/core/cvdef.h \
