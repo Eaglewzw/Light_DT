@@ -1,33 +1,5 @@
-#include <iostream>
-#include <chrono>
-#include <cmath>
-#include "cuda_utils.h"
-#include "logging.h"
-#include "common.hpp"
-#include "utils.h"
-#include "calibrator.h"
-#include "preprocess.h"
+#include "main.h"
 
-
-/***************************OpenCV库***************************/
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgcodecs.hpp"
-#include "opencv2/imgproc.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/videoio/videoio.hpp"
-#include "opencv2/video.hpp"
-#include "opencv2/opencv.hpp"
-
-#include "LightTrack.h"
-#include "MotionDetector.hpp"
-
-
-#define USE_FP16                                      // set USE_INT8 or USE_FP16 or USE_FP32
-#define DEVICE 0                                      // GPU id
-#define NMS_THRESH 0.4
-#define CONF_THRESH 0.5
-#define BATCH_SIZE 1
-#define MAX_IMAGE_INPUT_SIZE_THRESH 3000 * 3000       // ensure it exceed the maximum size in the input images !
 
 
 
@@ -37,15 +9,10 @@
 int glad_local_flag = 0;
 int init_trackwindow_flag = 0;
 
-
 int glad_appearance_detect_flag = 1;
 int glad_motion_detect_flag = 0;
 
-
-
 /**************************************************************************************/
-
-
 
 
 // stuff we know about the network and the input/output blobs
@@ -175,6 +142,9 @@ double ssimDetect(cv::Mat imgOrg, cv::Mat imgComp)
 }
 
 
+
+
+
 int main(int argc, char** argv) 
 {
     cudaSetDevice(DEVICE);
@@ -294,12 +264,14 @@ int main(int argc, char** argv)
     int frame_height = static_cast<int>(CvCapture.get(CAP_PROP_FRAME_HEIGHT));
     int frame_rate   = static_cast<int>(CvCapture.get(CAP_PROP_FPS));
     int frame_ex     = static_cast<int>(CvCapture.get(CAP_PROP_FOURCC)); // Get Codec Type- Int form
-    if (frame_rate <= 0) {
-        frame_rate = 30; // 如果无法检测到帧率，手动设置为30
+    if (frame_rate <= 0) 
+    {
+        frame_rate = 60; // 如果无法检测到帧率，手动设置为60
     }
 
    outputVideo.open("./output_video.mp4",  VideoWriter::fourcc('H', '2', '6', '4'), frame_rate, Size(frame_width, frame_height), true);
-   if (!outputVideo.isOpened()) {
+   if (!outputVideo.isOpened()) 
+   {
        std::cerr << "Error: Unable to open output video file!" << std::endl;
        return -1;
    }
@@ -354,33 +326,19 @@ int main(int argc, char** argv)
                     auto& res = batch_res[b];
                     cv::Mat img = imgs_buffer[b];
                     for (size_t j = 0; j < res.size(); j++) {
-                    
                         float score = res[j].conf;
-                        // cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
-                        // cv::putText(img, std::to_string((int)res[j].class_id), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
                         if((float)res[j].conf > prop_sore) {
                             r = get_rect(img, res[j].bbox);
                             trackWindow = r;
                             prop_sore = (float)res[j].conf;
                         }
 
-                        // std::ostringstream oss;
-                        // oss << std::fixed << std::setprecision(2) << (float)res[j].conf;
-                        // std::string conf_str = oss.str();
-                        // cv::putText(img, conf_str, cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
                     }
                 }
                 fcount = 0;
                 if(prop_sore > 0.5) {
                     cv::putText(currentFrame, "Global YOLO Detection Success", cv::Point(500, 100), cv::FONT_HERSHEY_SIMPLEX, 2, cv::Scalar(0, 255, 255), 2);
-                    cv::rectangle(currentFrame, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
-                    // cv::imshow("demo", currentFrame);          // Display result.
-                    
-                    // if (cv::waitKey(30) == 'q')         // Exit if 'q' pressed.
-                    // {
-                    //     break;
-                    // }
-
+                    // cv::rectangle(currentFrame, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
                     glad_local_flag = 1;
                     init_trackwindow_flag = 0;
 
@@ -569,4 +527,15 @@ int main(int argc, char** argv)
 
 
     return 0;
+}
+
+
+
+// 运动检测线程函数
+void motionDetectionThread(MotionDetector& detector) 
+{
+    while (true) 
+    {
+
+    }
 }

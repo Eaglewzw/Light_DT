@@ -5,6 +5,7 @@ CMakeFiles/Light_DT.dir/main.cpp.o
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/main.cpp
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/LightTrack.h
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/MotionDetector/MotionDetector.hpp
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/main.h
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/allocator.h
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/blob.h
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/command.h
@@ -189,6 +190,7 @@ CMakeFiles/Light_DT.dir/main.cpp.o
  /usr/include/c++/9/streambuf
  /usr/include/c++/9/string
  /usr/include/c++/9/system_error
+ /usr/include/c++/9/thread
  /usr/include/c++/9/tuple
  /usr/include/c++/9/type_traits
  /usr/include/c++/9/typeinfo

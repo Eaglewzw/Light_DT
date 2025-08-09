@@ -1,6 +1,8 @@
 CMakeFiles/Light_DT.dir/main.cpp.o: \
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/9/iostream \
+ /usr/include/stdc-predef.h \
+ /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/main.h \
+ /usr/include/c++/9/iostream \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -359,7 +361,7 @@ CMakeFiles/Light_DT.dir/main.cpp.o: \
  /usr/local/cuda/include/cuda_runtime_api.h \
  /usr/local/cuda/include/driver_functions.h \
  /usr/local/cuda/include/vector_functions.h \
- /usr/local/cuda/include/vector_functions.hpp \
+ /usr/local/cuda/include/vector_functions.hpp /usr/include/c++/9/thread \
  /usr/local/include/opencv4/opencv2/core/core.hpp \
  /usr/local/include/opencv4/opencv2/videoio/videoio.hpp \
  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/LightTrack.h \

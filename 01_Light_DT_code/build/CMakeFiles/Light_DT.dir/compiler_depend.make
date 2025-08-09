@@ -4,6 +4,7 @@
 CMakeFiles/Light_DT.dir/main.cpp.o: /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/main.cpp \
   /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/LightTrack.h \
   /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/MotionDetector/MotionDetector.hpp \
+  /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/main.h \
   /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/allocator.h \
   /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/blob.h \
   /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/command.h \
@@ -188,6 +189,7 @@ CMakeFiles/Light_DT.dir/main.cpp.o: /home/verse/C_plus_plus/Graduation_Code/Ligh
   /usr/include/c++/9/streambuf \
   /usr/include/c++/9/string \
   /usr/include/c++/9/system_error \
+  /usr/include/c++/9/thread \
   /usr/include/c++/9/tuple \
   /usr/include/c++/9/type_traits \
   /usr/include/c++/9/typeinfo \
@@ -3055,6 +3057,12 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h:
 
+/usr/include/eigen3/Eigen/src/LU/FullPivLU.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h:
+
 /usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
@@ -3145,9 +3153,11 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 
 /usr/include/eigen3/Eigen/src/Core/Solve.h:
 
-/usr/include/c++/9/system_error:
+/usr/include/c++/9/thread:
 
-/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h:
+/usr/include/x86_64-linux-gnu/c++/9/bits/error_constants.h:
+
+/usr/include/c++/9/system_error:
 
 /usr/include/c++/9/streambuf:
 
@@ -3255,9 +3265,9 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 
 /usr/include/c++/9/climits:
 
-/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src/cuda_utils.h:
-
 /usr/include/c++/9/bits/uniform_int_dist.h:
+
+/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src/cuda_utils.h:
 
 /usr/local/include/opencv4/opencv2/core.hpp:
 
@@ -3379,10 +3389,6 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 
 /usr/local/include/opencv4/opencv2/stitching.hpp:
 
-/usr/include/libintl.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
 /usr/include/c++/9/bits/cpp_type_traits.h:
 
 /usr/include/strings.h:
@@ -3443,23 +3449,11 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 
 /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/command.h:
 
-/usr/include/c++/9/stdexcept:
-
-/usr/include/c++/9/cstdio:
-
-/usr/include/eigen3/Eigen/src/Core/CoreIterators.h:
-
-/usr/include/c++/9/bits/std_mutex.h:
-
-/usr/include/c++/9/bits/stl_construct.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h:
-
-/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h:
-
 /usr/include/c++/9/map:
 
 /usr/include/c++/9/bits/deque.tcc:
+
+/home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/main.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
@@ -3613,6 +3607,10 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 
 /opt/TensorRT-8.6/include/NvInferVersion.h:
 
+/usr/include/libintl.h:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
 /usr/include/c++/9/ratio:
 
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLU_panel_dfs.h:
@@ -3620,6 +3618,20 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/include/ncnn/ncnn_export.h:
 
 /home/verse/C_plus_plus/Graduation_Code/Light_DT/01_Light_DT_code/src/logging.h:
+
+/usr/include/c++/9/stdexcept:
+
+/usr/include/c++/9/cstdio:
+
+/usr/include/eigen3/Eigen/src/Core/CoreIterators.h:
+
+/usr/include/c++/9/bits/std_mutex.h:
+
+/usr/include/c++/9/bits/stl_construct.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h:
 
 /usr/include/x86_64-linux-gnu/bits/dirent_ext.h:
 
@@ -3838,8 +3850,6 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 /usr/include/eigen3/Eigen/src/Core/Diagonal.h:
 
 /usr/include/x86_64-linux-gnu/c++/9/bits/ctype_base.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/error_constants.h:
 
 /usr/include/c++/9/bits/stl_bvector.h:
 
@@ -4284,7 +4294,3 @@ CMakeFiles/Light_DT.dir/src/yololayer.cu.o: /home/verse/C_plus_plus/Graduation_C
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h:
-
-/usr/include/eigen3/Eigen/src/LU/FullPivLU.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h:
