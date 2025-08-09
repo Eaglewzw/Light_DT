@@ -47,7 +47,7 @@ void softmax(float* array, int size)
 
 float MotionDetector::MobileNetV2_Infer(const cv::Mat& bgr)
 {
-    const int target_size = 224;
+    const int target_size = 60;
     const float mean_vals[3] = {0.485f * 255.f, 0.456f * 255.f, 0.406f * 255.f};
     const float norm_vals[3] = {1/0.229f/255.f, 1/0.224f/255.f, 1/0.225f/255.f};
 
