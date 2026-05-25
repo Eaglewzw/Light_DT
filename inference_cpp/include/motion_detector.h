@@ -12,12 +12,13 @@ public:
     ~MotionDetector() = default;
 
     cv::Rect detect(const cv::Mat& prevFrame, const cv::Mat& currentFrame);
+    int classify(const cv::Mat& crop, float* confidence = nullptr);
+
+    static constexpr int CLASSIFY_SIZE = 32;
 
 private:
     Ort::Env env_;
     Ort::Session session_;
-
-    static constexpr int CLASSIFY_SIZE = 32;
 
     struct CompensateResult {
         cv::Mat compensated;
@@ -26,7 +27,6 @@ private:
     };
 
     CompensateResult motionCompensate(const cv::Mat& gray1, const cv::Mat& gray2);
-    int classify(const cv::Mat& crop);
     cv::Rect enlargeBox(int x, int y, int w, int h, int pad, int img_w, int img_h);
 };
 

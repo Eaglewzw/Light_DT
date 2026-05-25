@@ -86,7 +86,7 @@ MotionDetector::CompensateResult MotionDetector::motionCompensate(
 
 // ==================== Classifier (ONNX) ====================
 
-int MotionDetector::classify(const cv::Mat& crop) {
+int MotionDetector::classify(const cv::Mat& crop, float* confidence) {
     cv::Mat resized, rgb;
     cv::resize(crop, resized, cv::Size(CLASSIFY_SIZE, CLASSIFY_SIZE));
     cv::cvtColor(resized, rgb, cv::COLOR_BGR2RGB);
@@ -111,8 +111,13 @@ int MotionDetector::classify(const cv::Mat& crop) {
         input_names, &tensor, 1, output_names, 1);
 
     const float* out = outputs[0].GetTensorData<float>();
-    // out[0] = non-drone, out[1] = drone — return argmax
-    return (out[1] > out[0]) ? 1 : 0;
+    float exp0 = std::exp(out[0]);
+    float exp1 = std::exp(out[1]);
+    float sum = exp0 + exp1;
+    float drone_conf = exp1 / sum;
+
+    if (confidence) *confidence = drone_conf;
+    return (drone_conf > 0.5f) ? 1 : 0;
 }
 
 // ==================== Utility ====================

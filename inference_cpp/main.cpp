@@ -4,8 +4,8 @@
 // ==================== Configuration ====================
 constexpr int    VISUAL_FAIL_THRESHOLD = 30;
 constexpr int    MOD_FAIL_THRESHOLD    = 10;
-constexpr int    YOLO_VERIFY_INTERVAL  = 30;
-constexpr float  YOLO_VERIFY_CONF      = 0.45f;
+constexpr int    CLASSIFIER_VERIFY_INTERVAL = 30;
+constexpr float  CLASSIFIER_VERIFY_CONF     = 0.6f;
 constexpr float  TRACK_SCORE_THRESHOLD = 0.98f;
 constexpr float  ROI_EXPANSION_FACTOR  = 3.0f;
 
@@ -93,12 +93,9 @@ int main(int argc, char** argv) {
     std::string update_model = model_dir + "/lighttrack_update";
     auto tracker = std::make_unique<LightTrack>(init_model, update_model);
 
-    // MOD motion detector (ONNX Runtime)
-    std::unique_ptr<MotionDetector> mod_detector;
-    if (config.motion_detect) {
-        std::string classifier_path = model_dir + "/Net_best.onnx";
-        mod_detector = std::make_unique<MotionDetector>(classifier_path);
-    }
+    // MOD motion detector / Classifier (ONNX Runtime)
+    std::string classifier_path = model_dir + "/Net_best.onnx";
+    auto mod_detector = std::make_unique<MotionDetector>(classifier_path);
 
     // ==================== Video Setup ====================
 
@@ -239,24 +236,24 @@ int main(int argc, char** argv) {
             cxy_wh_2_rect(tracker->target_pos, tracker->target_sz, rect);
             rect = safeRect(rect, currentFrame.size());
 
-            // Periodic YOLO verification
-            if (config.visual_detect && frame_count % YOLO_VERIFY_INTERVAL == 0 &&
+            // Periodic classifier verification
+            if (frame_count % CLASSIFIER_VERIFY_INTERVAL == 0 &&
                 rect.width > 0 && rect.height > 0) {
 
                 cv::Mat roi = getSafeROI(currentFrame, rect, ROI_EXPANSION_FACTOR);
                 if (!roi.empty()) {
-                    auto roi_dets = yolo.detect(roi, CONF_THRESH, NMS_THRESH);
-                    float best_verify = 0;
-                    for (const auto& d : roi_dets) {
-                        best_verify = std::max(best_verify, d.conf);
-                    }
+                    float drone_conf = 0;
+                    int pred = mod_detector->classify(roi, &drone_conf);
 
-                    if (best_verify < YOLO_VERIFY_CONF) {
+                    if (pred != 1 || drone_conf < CLASSIFIER_VERIFY_CONF) {
                         std::cout << "Frame " << frame_count
-                                  << ": YOLO verify failed (" << best_verify
-                                  << " < " << YOLO_VERIFY_CONF << ") -> search" << std::endl;
+                                  << ": Classifier verify failed (drone=" << drone_conf
+                                  << ") -> search" << std::endl;
                         tracking_state = false;
                         score = 0;
+                    } else {
+                        std::cout << "Frame " << frame_count
+                                  << ": Classifier verified (drone=" << drone_conf << ")" << std::endl;
                     }
                 }
             }
