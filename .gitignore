@@ -1,0 +1,24 @@
+# IDE
+.idea/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual env
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output videos
+assets/*.mp4
+
+# Jupyter
+.ipynb_checkpoints/

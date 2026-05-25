@@ -16,8 +16,11 @@ UPDATE_MODEL = "./model/ligthtrack_update.pt"
 
 
 # 导入 LightTrack
+from torchvision import transforms
+import torch
 from LightTrack_FastTrack import LightTrackEngine
 from MOD2 import MOD2_global
+from Functions import Net
 
 # ================= 1. 动态导入 YOLO 模块 =================
 if USE_TENSORRT_10:
@@ -44,8 +47,13 @@ else:
     else:
         print(f"⚠️ 警告: 找不到插件库 {PLUGIN_LIBRARY}")
 
+NET_MODEL_PATH = "./model/Net_best.pth"
+NET_INPUT_SIZE = 32
+NET_VERIFY_INTERVAL = 30
+NET_CONFIDENCE_THRESHOLD = 0.6
+
 # ==================== 2. 核心配置 ====================
-VIDEO_PATH = "/home/verser/Videos/phantom57.mp4"
+VIDEO_PATH = "/home/verser/Videos/fast_drone.mp4"
 DEVICE = 'cuda'
 
 # --- 策略阈值 (新增) ---
@@ -186,6 +194,15 @@ def main():
             print(f"❌ 错误: 找不到 YOLO 引擎文件")
             return
 
+    # C. 初始化 Net 分类器 (跟踪验证用)
+    print(f"初始化 Net 分类器: {NET_MODEL_PATH}...")
+    net_classifier = Net()
+    net_classifier.load_state_dict(torch.load(NET_MODEL_PATH, map_location=DEVICE))
+    net_classifier.to(DEVICE)
+    net_classifier.eval()
+    net_transform = transforms.Compose([transforms.ToTensor()])
+    print("✅ Net 分类器加载完成")
+
     # ==================== 5. 主循环 ====================
     ret, prev_frame = cap.read()
     if not ret: return
@@ -308,56 +325,30 @@ def main():
             cv2.putText(display_frame, "Search Area", (sx, sy - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
             # ==============================================================================
 
-            # ================== 每 120 帧进行一次 YOLO 验证 ==================
-            # 只有当开启了视觉检测，且当前处于跟踪状态时执行
-            if ENABLE_CONFIG["VISUAL_DETECT"] and frame_count % 30 == 0:
+            # ================== 每 N 帧进行一次 Net 分类验证 ==================
+            if frame_count % NET_VERIFY_INTERVAL == 0:
 
-                # 1. 裁剪 ROI (扩大 1.5 倍，防止目标正好在边缘被切断)
+                # 1. 裁剪 ROI
                 roi_img, roi_coords = get_safe_roi(curr_frame, bbox, expansion_factor=3)
 
                 if roi_img is not None:
-                    # 2. 送入 YOLO 检测
-                    # 注意：YOLO 可能会把 ROI resize 到 640x640，这正是“局部放大”的效果
-                    roi_bbox = yolo_detector.detect(roi_img)
+                    # 2. 送入 Net 分类器
+                    roi_resized = cv2.resize(roi_img, (NET_INPUT_SIZE, NET_INPUT_SIZE))
+                    roi_tensor = net_transform(roi_resized).unsqueeze(0).to(DEVICE)
 
-                    # 3. 严格阈值判决
-                    # 默认认为验证失败，除非证据确凿
-                    is_verified = False
-                    verify_score = 0.0
+                    with torch.no_grad():
+                        output = net_classifier(roi_tensor).squeeze()
+                        probs = torch.softmax(output, dim=0)
+                        pred_cls = torch.argmax(probs).item()
+                        drone_conf = probs[1].item()
 
-                    if roi_bbox is not None:
-                        # ★★★ 提取你的 detect 返回的 conf ★★★
-                        verify_score = roi_bbox[4]
-
-                        # ★★★ 关键点：这里用 0.6 或 0.7，比 detect 内部的 0.25 要高 ★★★
-                        if verify_score > 0.45:
-                            is_verified = True
-                        else:
-                            print(f"Frame {frame_count}: ⚠️ 验证置信度不足 ({verify_score:.2f} < 0.6)")
-
-                    # 4. 根据结果执行动作
-                    if not is_verified:
-                        print(f"Frame {frame_count}: ❌ YOLO 验证失败 -> 强制中断跟踪")
-
-                        # 强制中断跟踪
+                    # 3. 判决: class 1 = drone, class 0 = background
+                    if pred_cls == 1 and drone_conf >= NET_CONFIDENCE_THRESHOLD:
+                        print(f"Frame {frame_count}: Net verified (drone={drone_conf:.2f})")
+                    else:
+                        print(f"Frame {frame_count}: Net verify failed (drone={drone_conf:.2f}) -> break tracking")
                         tracking_state = False
                         score = 0.0
-
-                        # (可选) 画红框可视化
-                        # rx1, ry1, rx2, ry2 = roi_coords
-                        # cv2.rectangle(display_frame, (rx1, ry1), (rx2, ry2), (0, 0, 255), 2)
-                        # cv2.putText(display_frame, f"Fail:{verify_score:.2f}", (rx1, ry1 - 5),
-                        #             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-                    else:
-                        # 验证成功
-                        # (可选) 你甚至可以用 YOLO 的框修正 Tracker 的框 (这里暂时不做，仅作验证)
-                        print(f"Frame {frame_count}: ✅ YOLO 验证通过")
-
-                        # 可视化验证成功的区域 (紫色框)
-                        # rx1, ry1, rx2, ry2 = roi_coords
-                        # cv2.rectangle(display_frame, (rx1, ry1), (rx2, ry2), (255, 0, 255), 2)
-                        # cv2.putText(display_frame, "Verify OK", (rx1, ry1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
-                        #             (255, 0, 255), 2)
             # ======================================================================
 
             # 跟踪结果判断 (原有的 score 判断逻辑)
@@ -378,30 +369,6 @@ def main():
                 cv2.putText(display_frame, f"Track: {score:.2f}", (x, y - 10),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
 
-        # else:
-        #     bbox, score = tracker.track(curr_frame)
-        #
-        #     # 【新增功能】绘制 LightTrack 搜索区域 (白色框)
-        #     # 必须使用 bbox[:4] 避免解包错误
-        #     sx, sy, sw, sh = get_search_bbox(bbox[:4], curr_frame.shape)
-        #     cv2.rectangle(display_frame, (sx, sy), (sx + sw, sy + sh), (255, 255, 255), 2)
-        #     cv2.putText(display_frame, "Search Area", (sx, sy - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-        #
-        #     # 跟踪结果判断
-        #     if score <= 0.98:
-        #         print(f"Frame {frame_count}: ⚠️ 追踪丢失 (Score: {score:.2f}) -> 切回搜索")
-        #         tracking_state = False
-        #         visual_fail_count = 0  # 立即允许 YOLO 尝试
-        #         mod_fail_count = 0
-        #
-        #         x, y, w, h = map(int, bbox[:4])
-        #         cv2.rectangle(display_frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
-        #     else:
-        #         x, y, w, h = map(int, bbox[:4])
-        #         cv2.rectangle(display_frame, (x, y), (x + w, y + h), (0, 255, 255), 2)
-        #         cv2.putText(display_frame, f"Track: {score:.2f}", (x, y - 10),
-        #                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
-
         # --------------------------------------------
         prev_frame = curr_frame.copy()
 
@@ -410,10 +377,10 @@ def main():
         state_color = (0, 255, 255) if tracking_state else (0, 0, 255)
         fps_color = (0, 255, 0) if current_fps >= 30 else (0, 255, 255)
 
-        # cv2.putText(display_frame, f"Mode: {state_text}", (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, state_color, 2)
-        # cv2.putText(display_frame, f"FPS: {current_fps * 2 :.1f}", (20, 120), cv2.FONT_HERSHEY_SIMPLEX, 0.8, fps_color, 2)
+        cv2.putText(display_frame, f"Mode: {state_text}", (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, state_color, 2)
+        cv2.putText(display_frame, f"FPS: {current_fps * 2 :.1f}", (20, 120), cv2.FONT_HERSHEY_SIMPLEX, 0.8, fps_color, 2)
         config_str = f"V:{int(ENABLE_CONFIG['VISUAL_DETECT'])} M:{int(ENABLE_CONFIG['MOTION_DETECT'])} T:{int(ENABLE_CONFIG['TRACKING'])}"
-        # cv2.putText(display_frame, config_str, (20, 160), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (254, 0, 0), 1)
+        cv2.putText(display_frame, config_str, (20, 160), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (254, 0, 0), 1)
 
         # ==================== 写入视频帧 ====================
         if video_writer is not None:
